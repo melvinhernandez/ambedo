@@ -1,6 +1,7 @@
 const User = require('./models/user/model');
 const postAPI = require('./models/post/api');
 const userAPI = require('./models/user/api');
+const isLoggedIn = require('./tools/helper').isLoggedIn;
 
 // Routes
 const routes = (app, passport) => {
@@ -27,7 +28,7 @@ const routes = (app, passport) => {
   /* Signup using spotify strategy. */
   // ToDo: Figure out the scopes needed: https://developer.spotify.com/web-api/using-scopes/#tablepress-78
   app.get('/auth/spotify',
-    passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private'] }, { showsDialog: true }),
+    passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private', 'playlist-read-private'	] }, { showsDialog: true }),
     (req, res) => {
       /* This function is not called. */
     }
@@ -53,14 +54,6 @@ const routes = (app, passport) => {
   /* USER ROUTES */
   userAPI(app);
 
-}
-
-const isLoggedIn = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
 }
 
 module.exports = routes;

@@ -3,7 +3,7 @@ const User = require('./model');
 
 
 /* Returns spotify user as a promise. */
-const signInWithSpotify = (profile) => {
+const signInWithSpotify = (profile, accessToken) => {
   console.log('Signing in...');
   return new Promise((resolve, reject) => {
     User.findOne({ 'spotify.id': profile.id}, (error, user) => {
@@ -12,7 +12,7 @@ const signInWithSpotify = (profile) => {
       } else if (user) {
         resolve(user);
       } else {
-        const newUser = createUser(profile);
+        const newUser = createUser(profile, accessToken);
         newUser.save((error) => {
           if (error) {
             reject(error);
@@ -49,10 +49,10 @@ const createUser = (profile, accessToken) => {
       id: profile.id,
       username: profile.username,
       name: profile.displayName,
-      url: profile.profileUrl,
-      token: accessToken
+      url: profile.profileUrl
     }
   });
+  newUser.spotify.token = accessToken;
   return newUser;
 }
 
