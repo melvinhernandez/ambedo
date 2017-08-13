@@ -11,6 +11,8 @@ const configDB      = require('./bin/dbconfig');
 const passport      = require('passport');
 const flash         = require('connect-flash');
 
+const expressLayouts= require('express-ejs-layouts');
+
 // Create our express application.
 const app = express();
 
@@ -22,6 +24,7 @@ mongoose.connect(configDB.url);
 // view engine setup
 // app.set('views', path.join(__dirname, '../frontend/'));
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

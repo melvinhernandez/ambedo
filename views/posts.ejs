@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <% posts.forEach( (post) => { %>
+      <div class="col s4">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src=<%= post.spotify.image %>>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= post.title %><i class="material-icons right">more_vert</i></span>
+            <a href=<%= post.spotify.url %> class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">queue_music</i></a>
+            <p>
+              <i><%= post.content %></i><br>
+              Posted by: <a href=<%= post.user.spotify.url %>><%= post.user.spotify.username %></a>
+            </p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= post.spotify.name %><i class="material-icons right">close</i></span>
+            <iframe src=<%= 'https://open.spotify.com/embed?uri=' + post.playlistUri %> width="100%" height="380" frameborder="0" allowtransparency="true"></iframe>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>

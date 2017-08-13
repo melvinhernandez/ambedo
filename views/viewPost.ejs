@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Homepage! :)</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <h1>Hello, <span><%= user.spotify.username %>!</h1>
+    <h2><%= post.title %></h2>
+    <p><%= post.content %></p>
+    <hr>
+    <% if (!post) {%>
+      <p>We could not find the post.</p>
+    <% } else { %>
+      <p>Here is your playlist.</p>
+      <%= console.log('ejs post out here'); %>
+      <iframe src=<%= 'https://open.spotify.com/embed?uri=' + post.playlistUri %> width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+    <% } %>
+</body>
+</html>

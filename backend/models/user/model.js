@@ -12,7 +12,9 @@ const userSchema = mongoose.Schema({
     username: String,
     name: String,
     url: String,
-    token: String
+    token: String,
+    refreshToken: String,
+    expires: Date
   }
  });
 

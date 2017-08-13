@@ -18,6 +18,10 @@ const userAPI = (app) => {
       (error) => {console.log(error);}
     );
   });
+
+  app.get('/user/:username', (req, res) => {
+
+  });
 }
 
 module.exports = userAPI;

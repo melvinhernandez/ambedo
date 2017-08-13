@@ -7,9 +7,13 @@ const mongoose = require('mongoose');
 const postSchema = mongoose.Schema({
   title: String,
   content: String,
-  playlistUrl: String,
-  user_id: mongoose.Schema.ObjectId,
-  user: { type: mongoose.Schema.ObjectId, ref: 'user' }
+  playlistUri: String,
+  spotify: {
+    image: String,
+    url: String,
+    name: String
+  },
+  user: { type: mongoose.Schema.ObjectId, ref: 'User' }
  });
 
 module.exports = mongoose.model('Post', postSchema);

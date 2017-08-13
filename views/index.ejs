@@ -1,24 +1,35 @@
-<html>
-<head>
-  <title>Homepage! :)</title>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
+<div class="container">
   <% if (!user) { %>
     <h2>You should signup to my website!</h2>
-    <a href="/login">LOGIN!</a>
+    <a href="/auth/spotify" class="waves-effect waves-light btn-large"><i class="material-icons left">face</i>Login</a>
   <% } else { %>
-    <h1>Hello, <span><%= user.spotify.username %> this should be the homepage!</h1>
-    <h3>SHARE A NEW PLAYLIST</h3>
-    <form action="/api/post/new" method="post">
-      <label for="Title">Title</label>
-      <input type="text" name="title"><br>
-      <label for="content">content</label>
-      <input type="text" name="content"><br>
-      <label for="playlistUrl">Playlist url</label>
-      <input type="text" name="playlistUrl"><br>
-      <button type="submit"></button>
-    </form>
+    <h3 class="center-align grey-text ">Welcome, <%= user.spotify.username %> :)</h3>
+    <h4 class="center-align teal-text text-lighten-2">SHARE A NEW PLAYLIST</h4>
+    <div class="row">
+      <form class="col s6 offset-s3 center-align" action="/api/post/new" method="post">
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="title">Title</label>
+            <input name="title" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="content">Caption</label>
+            <input name="content" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <label for="playlistUri">PlaylistURI</label>
+            <input name="playlistUri" type="text" class="validate">
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Share
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
+
   <% } %>
-</body>
-</html>
+</div>

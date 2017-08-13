@@ -24,7 +24,7 @@ const passportConfiguration = (passport) => {
   },
   (accessToken, refreshToken, profile, done) => {
     process.nextTick(() => {
-      signInWithSpotify(profile, accessToken).then(
+      signInWithSpotify(profile, accessToken, refreshToken).then(
         (user) => {
           console.log("Signed in successfully!");
           done(null, user);

@@ -40,7 +40,7 @@ const routes = (app, passport) => {
   );
 
   app.get('/login', (req, res) => {
-    res.render('login.ejs');
+    res.render('login.ejs', {user: req.user});
   });
 
   app.get('/profile', isLoggedIn, (req, res) => {
