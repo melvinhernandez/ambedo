@@ -16,6 +16,7 @@ const expressLayouts= require('express-ejs-layouts');
 // Create our express application.
 const app = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect(configDB.url);
 
 // We dont need this for right now

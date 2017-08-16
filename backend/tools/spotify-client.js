@@ -84,14 +84,8 @@ const updateToken = (user) => {
             .send(parameters)
             .then(
               (data) => {
-                console.log("success! New token is here");
-                console.log(data.access_token);
-                console.log('with text');
-                console.log(data.body.access_token);
-                console.log("Melvin expires in: " + user.spotify.expires);
                 let newExpiration = new Date();
                 newExpiration.setHours(newExpiration.getHours() + 1);
-                console.log(newExpiration.toString());
                 user.spotify.expires = newExpiration;
                 user.spotify.token = data.body.access_token;
                 user.save(
@@ -100,14 +94,12 @@ const updateToken = (user) => {
                 resolve(user);
               },
               (error) => {
-                console.log('sorry,, token fucked up');
                 console.log(error);
                 reject(error);
               }
             )
             .catch(
               error => {
-                    console.log('i catch');
                     console.log(error);
                   }
             );

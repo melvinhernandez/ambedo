@@ -1,11 +1,12 @@
 /* Post API and Routes. */
-const postController = require('./controller');
-const createPost = postController.createPost;
-const findPost = postController.findPost;
-const getAllPosts = postController.getAllPosts;
-const getUsernamePosts = postController.getUsernamePosts;
-const isLoggedIn = require('./../../tools/helper').isLoggedIn;
-const getMyPlaylists = require('./../../tools/spotify-client').getMyPlaylists;
+const {
+  createPost,
+  findPost,
+  getAllPosts,
+  getUsernamePosts
+} = require('./controller');
+const isLoggedIn = require('../../tools/helper').isLoggedIn;
+const getMyPlaylists = require('../../tools/spotify-client').getMyPlaylists;
 
 
 const postAPI = (app) => {
@@ -31,6 +32,11 @@ const postAPI = (app) => {
       }
     );
   });
+
+  app.post('/post/vote', isLoggedIn, (req, res) => {
+    console.log(req);
+  });
+
   app.get('/api/:username', isLoggedIn, (req, res) => {
     getUsernamePosts(req.params.username).then(
       (data) => {

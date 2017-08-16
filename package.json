@@ -20,6 +20,7 @@
     "foreman": "^2.0.0",
     "mongodb": "*",
     "mongoose": "4.10.8",
+    "mongoose-voting": "^0.3.0",
     "morgan": "~1.8.1",
     "nodemon": "^1.11.0",
     "passport": "*",
@@ -29,6 +30,7 @@
     "querystring": "^0.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "semantic-ui-react": "^0.71.4",
     "serve-favicon": "~2.4.2",
     "superagent": "^3.5.2"
   },
