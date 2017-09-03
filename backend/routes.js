@@ -43,6 +43,11 @@ const routes = (app, passport) => {
     res.render('login.ejs', {user: req.user});
   });
 
+  app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+  });
+
   app.get('/profile', isLoggedIn, (req, res) => {
     res.redirect('http://google.com');
   });
